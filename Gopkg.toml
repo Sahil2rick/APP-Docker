@@ -1,0 +1,149 @@
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#  name = "github.com/x/y"
+#  version = "2.4.0"
+
+required = ["github.com/wadey/gocovmerge"]
+
+[[override]]
+  name = "github.com/docker/buildx"
+  revision = "709ef36b4f10a9389fd9a806657c48a969909d85"
+
+[[override]]
+  name = "github.com/moby/buildkit"
+  version = "=v0.6.2"
+
+[[override]]
+  name = "github.com/jaguilar/vt100"
+  source = "github.com/tonistiigi/vt100"
+  revision = "ad4c4a5743050fb7f88ce968dca9422f72a0e3f2"
+
+# We need runc at least 0.0.9 to get otherwise missing stubs for non-linux platforms.
+# We need > 0.1.1 as it depends on uppercase Sirupsen/logrus.
+[[override]]
+  name = "github.com/opencontainers/runc"
+  version = "v1.0.0-rc6"
+
+[[override]]
+  name = "github.com/docker/cnab-to-oci"
+  version = "v0.3.0-beta2"
+
+[[override]]
+  name = "github.com/containerd/containerd"
+  revision = "97712c8ad73dd302d5d226e0384b2d86e5de2989"
+
+# docker/cli master branch, future 20.03 release
+[[override]]
+  name = "github.com/docker/cli"
+  revision = "abafad3df202a691bc07332ea166af548a6cd9a0"
+
+[[override]]
+  name = "github.com/deislabs/cnab-go"
+  version = "v0.7.1-beta1"
+
+[[constraint]]
+  name = "github.com/sirupsen/logrus"
+  version = "v1.0.5"
+
+[[override]]
+  name = "github.com/dgrijalva/jwt-go"
+  revision = "v2.6.0"
+
+[[override]]
+  name = "github.com/docker/licensing"
+  revision = "369e5301dc601b478021c0f588f5c3d04626d804"
+
+[[override]]
+  name = "github.com/xeipuuv/gojsonschema"
+  version = "v1.2.0"
+  
+[[override]]
+  name = "github.com/docker/go-metrics"
+  revision = "d466d4f6fd960e01820085bd7e1a24426ee7ef18"
+
+[[override]]
+  name = "github.com/prometheus/client_golang"
+  revision = "v0.8.0"
+
+[[override]]
+  name = "github.com/docker/distribution"
+  revision = "0d3efadf0154c2b8a4e7b6621fff9809655cc580" # version needed by containerd v1.3.0
+
+[[override]]
+  name = "github.com/docker/swarmkit"
+  revision = "18e7e58ea1a5ec016625a636d0d52500eea123bc"
+
+[[override]]
+  name = "k8s.io/kubernetes"
+  revision = "v1.14.1"
+
+[[override]]
+  name = "k8s.io/api"
+  revision = "kubernetes-1.14.1"
+
+[[override]]
+  name = "k8s.io/apimachinery"
+  revision = "kubernetes-1.14.1"
+
+# Overriding imdario/mergo since https://github.com/imdario/mergo/pull/112 is required
+[[override]]
+  name = "github.com/imdario/mergo"
+  branch = "master"
+
+[[override]]
+  name = "k8s.io/client-go"
+  revision = "kubernetes-1.14.1"
+
+[[override]]
+  name = "github.com/opencontainers/runtime-spec"
+  revision = "29686dbc5559d93fb1ef402eeda3e35c38d75af4"
+
+[[override]]
+  name = "github.com/Microsoft/hcsshim"
+  revision = "2226e083fc390003ae5aa8325c3c92789afa0e7a"
+
+
+[[constraint]]
+  name = "github.com/spf13/pflag"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/wadey/gocovmerge"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/jackpal/gateway"
+  revision = "5ceb358a720efa82a5692470f37874b1f48035ad"
+
+[[constraint]]
+  name = "github.com/dustin/go-humanize"
+  version = "1.0.0"
+
+[[constraint]]
+  name = "github.com/hashicorp/go-multierror"
+  version = "1.0.0"
+
+[prune]
+  non-go = true
+  unused-packages = true
+  go-tests = true
+
+  [[prune.project]]
+    name = "github.com/docker/cli"
+    non-go = false
